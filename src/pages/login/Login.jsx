@@ -105,6 +105,8 @@ export default function Login() {
                                 fullWidth
                                 variant="contained"
                                 sx={{ mt: 3, mb: 2 }}
+                                component={ReactRouterLink}
+                                to="/requests"
                             >
                                 Entrar
                             </Button>
