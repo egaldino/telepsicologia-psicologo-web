@@ -79,7 +79,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 
 const mdTheme = createTheme();
 
-function HomeContent({children}) {
+function HomeContent({title, children}) {
     const [open, setOpen] = React.useState(true);
     const toggleDrawer = () => {
         setOpen(!open);
@@ -114,10 +114,10 @@ function HomeContent({children}) {
                             noWrap
                             sx={{ flexGrow: 1 }}
                         >
-                            Home
+                            {title}
                         </Typography>
                         <IconButton color="inherit">
-                            <Badge badgeContent={4} color="secondary">
+                            <Badge badgeContent={8} color="secondary">
                                 <NotificationsIcon />
                             </Badge>
                         </IconButton>
@@ -166,6 +166,6 @@ function HomeContent({children}) {
     );
 }
 
-export default function HomeTemplate({ children }) {
-    return <HomeContent>{children}</HomeContent>;
+export default function HomeTemplate({ title, children }) {
+    return <HomeContent title={title}>{children}</HomeContent>;
 }

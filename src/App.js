@@ -2,7 +2,11 @@ import React from 'react';
 import Login from "./pages/login/Login";
 import Register from "./pages/register/Register";
 import HomeTemplate from "./pages/home/HomeTemplate";
+import Requests from './pages/home/requests/Requests'
 import {BrowserRouter, Route, Routes} from "react-router-dom";
+import ScheduledAppointments from "./pages/home/scheduledAppointments/ScheduledAppointments";
+import PastAppointments from "./pages/home/pastAppointments/PastAppointments";
+import Profile from "./pages/home/profile/Profile";
 
 
 const App = () => {
@@ -12,20 +16,20 @@ const App = () => {
                 <Route path="/" element={<Login/>}/>
                 <Route path="register" element={<Register/>}/>
                 <Route path="requests" element={
-                    <HomeTemplate>
-                        Solicitacoes
+                    <HomeTemplate title="Solicitações de Consulta">
+                        <Requests />
                     </HomeTemplate>}/>
                 <Route path="schedule" element={
-                    <HomeTemplate>
-                        Agendamentos
+                    <HomeTemplate title="Consultas Agendadas">
+                        <ScheduledAppointments />
                     </HomeTemplate>}/>
                 <Route path="history" element={
-                    <HomeTemplate>
-                        Realizadas
+                    <HomeTemplate title="Consultas Realizadas">
+                        <PastAppointments />
                     </HomeTemplate>}/>
                 <Route path="profile" element={
-                    <HomeTemplate>
-                        Perfil
+                    <HomeTemplate title="Meus Dados">
+                        <Profile />
                     </HomeTemplate>}/>
             </Routes>
         </BrowserRouter>
