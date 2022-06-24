@@ -3,7 +3,8 @@ import Peer from 'simple-peer';
 
 const SocketContext = createContext();
 
-const socket = new WebSocket('wss://cb20-138-117-222-73.sa.ngrok.io/socket');
+// const socket = new WebSocket('wss://cb20-138-117-222-73.sa.ngrok.io/socket');
+const socket = new WebSocket('wss://demo.piesocket.com/v3/channel_1?api_key=VCXCEuvhGcBDP7XhiJJUDvR1e1D3eiVjgZ9VRiaV&notify_self');
 
 const ContextProvider = ({ children }) => {
   const [callAccepted, setCallAccepted] = useState(false);

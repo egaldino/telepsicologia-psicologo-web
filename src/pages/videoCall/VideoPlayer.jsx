@@ -1,50 +1,26 @@
 import React, {useContext} from 'react';
 import {SocketContext} from '../../context/VideoCallContext';
-import {AppBar, Grid, makeStyles, Paper, Typography} from "@mui/material";
-
-const useStyles = makeStyles((theme) => ({
-    video: {
-        width: '550px',
-        [theme.breakpoints.down('xs')]: {
-            width: '300px',
-        },
-    },
-    gridContainer: {
-        justifyContent: 'center',
-        [theme.breakpoints.down('xs')]: {
-            flexDirection: 'column',
-        },
-    },
-    paper: {
-        padding: '10px',
-        border: '2px solid black',
-        margin: '10px',
-    },
-}));
+import { Grid, Paper, Typography} from "@mui/material";
 
 const VideoPlayer = () => {
     const {name, callAccepted, myVideo, userVideo, callEnded, stream, call} = useContext(SocketContext);
-    const classes = useStyles();
 
     return (
         <>
-            <AppBar className={classes.appBar} position="static" color="inherit">
-                <Typography variant="h2" align="center">Video Chat</Typography>
-            </AppBar>
-            <Grid container className={classes.gridContainer}>
+            <Grid container>
                 {stream && (
-                    <Paper className={classes.paper}>
+                    <Paper>
                         <Grid item xs={12} md={6}>
                             <Typography variant="h5" gutterBottom>{name || 'Name'}</Typography>
-                            <video playsInline muted ref={myVideo} autoPlay className={classes.video}/>
+                            <video playsInline muted ref={myVideo} autoPlay style={{width: '550px'}}/>
                         </Grid>
                     </Paper>
                 )}
                 {callAccepted && !callEnded && (
-                    <Paper className={classes.paper}>
+                    <Paper>
                         <Grid item xs={12} md={6}>
                             <Typography variant="h5" gutterBottom>{call.name || 'Name'}</Typography>
-                            <video playsInline ref={userVideo} autoPlay className={classes.video}/>
+                            <video playsInline ref={userVideo} autoPlay style={{width: '550px'}}/>
                         </Grid>
                     </Paper>
                 )}

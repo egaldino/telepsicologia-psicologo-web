@@ -4,6 +4,7 @@ import Button from "@mui/material/Button";
 import { DataGrid } from '@mui/x-data-grid';
 import {useState} from "react";
 import Box from "@mui/material/Box";
+import {Link as ReactRouterLink} from "react-router-dom";
 
 const renderDetailsButton = (params) => {
     return (
@@ -58,7 +59,7 @@ const ScheduledAppointments = () => {
                 </Typography>
             </CardContent>
             <CardActions>
-                <Button size="small">Entrar na chamada</Button>
+                <Button size="small" component={ReactRouterLink} to="/call">Entrar na chamada</Button>
                 <Button size="small" sx={{color: 'error.main'}}>Cancelar</Button>
             </CardActions>
         </Card>

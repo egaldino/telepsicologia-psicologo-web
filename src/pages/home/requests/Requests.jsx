@@ -6,14 +6,16 @@ import Grid from "@mui/material/Grid";
 
 
 const Requests = () => {
-    const [pendingRequests] = useState([{name: 'Myodo', date: '22/06/2022', hour: '12h'},
-        {name: 'Cuvuo', date: '22/06/2022', hour: '12h'},{name: 'Faici', date: '22/06/2022', hour: '12h'},
-        {name: 'Woyde', date: '22/06/2022', hour: '12h'},{name: 'Hauporis', date: '22/06/2022', hour: '12h'},{name: 'Guas', date: '22/06/2022', hour: '12h'},{name: 'Piale', date: '22/06/2022', hour: '12h'},{name: 'Plamo', date: '22/06/2022', hour: '12h'}]);
+    const [pendingRequests] = useState([{id: 1, name: 'Myodo', date: '22/06/2022', hour: '12h'},
+        {id: 2, name: 'Cuvuo', date: '22/06/2022', hour: '12h'},{id: 3, name: 'Faici', date: '22/06/2022', hour: '12h'},
+        {id: 4, name: 'Woyde', date: '22/06/2022', hour: '12h'},{id: 5, name: 'Hauporis', date: '22/06/2022', hour: '12h'},
+        {id: 6, name: 'Guas', date: '22/06/2022', hour: '12h'},{id: 7, name: 'Piale', date: '22/06/2022', hour: '12h'},
+        {id: 8, name: 'Plamo', date: '22/06/2022', hour: '12h'}]);
 
 
     return <Grid container rowSpacing={1} columnSpacing={{xs: 1, sm: 2, md: 3}}>
         {pendingRequests.map(pendingRequest =>
-            <Grid item xs={4}>
+            <Grid key={pendingRequest.id} item xs={4}>
                 <PendingRequestCard pendingRequest={pendingRequest}/>
             </Grid>
         )}

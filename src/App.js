@@ -7,7 +7,7 @@ import {BrowserRouter, Route, Routes} from "react-router-dom";
 import ScheduledAppointments from "./pages/home/scheduledAppointments/ScheduledAppointments";
 import PastAppointments from "./pages/home/pastAppointments/PastAppointments";
 import Profile from "./pages/home/profile/Profile";
-
+import VideoCall from "./pages/videoCall/VideoCall";
 
 const App = () => {
     return (
@@ -31,6 +31,7 @@ const App = () => {
                     <HomeTemplate title="Meus Dados">
                         <Profile />
                     </HomeTemplate>}/>
+                <Route path="call" element={<VideoCall/>}/>
             </Routes>
         </BrowserRouter>
     );
