@@ -1,8 +1,9 @@
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import {DataGrid} from '@mui/x-data-grid';
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import Box from "@mui/material/Box";
+import {listPastAppointments} from "../../../services/appointments";
 
 const renderDetailsButton = (params) => {
     return (
@@ -30,18 +31,13 @@ const columns = [
 ];
 
 const PastAppointments = () => {
-    const [appointments] = useState([
-        { id: 1, lastName: 'Snow', firstName: 'Jon', date: '24/06/2022 - 12:00h' },
-        { id: 2, lastName: 'Lannister', firstName: 'Cersei', date: '24/06/2022 - 12:00h' },
-        { id: 3, lastName: 'Lannister', firstName: 'Jaime', date: '24/06/2022 - 12:00h' },
-        { id: 4, lastName: 'Stark', firstName: 'Arya', date: '24/06/2022 - 12:00h' },
-        { id: 5, lastName: 'Targaryen', firstName: 'Daenerys', date: '24/06/2022 - 12:00h' },
-        { id: 6, lastName: 'Melisandre', firstName: null, date: '24/06/2022 - 12:00h' },
-        { id: 7, lastName: 'Clifford', firstName: 'Ferrara', date: '24/06/2022 - 12:00h' },
-        { id: 8, lastName: 'Frances', firstName: 'Rossini', date: '24/06/2022 - 12:00h' },
-        { id: 9, lastName: 'Roxie', firstName: 'Harvey', date: '24/06/2022 - 12:00h' },
-    ]);
+    const [appointments, setAppointments] = useState([]);
 
+    useEffect(()=> {
+        listPastAppointments('123456')
+            .then(appointments => setAppointments(appointments))
+            .catch(error => console.error(error));
+    } , [])
 
     return <>
         <Typography variant="h5" component="h1" sx={{marginY: 2}}>
