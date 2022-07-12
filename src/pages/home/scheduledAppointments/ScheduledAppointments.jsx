@@ -6,6 +6,7 @@ import {useEffect, useState} from "react";
 import Box from "@mui/material/Box";
 import {Link as ReactRouterLink} from "react-router-dom";
 import {listScheduledAppointments} from "../../../services/appointments";
+import {useSelector} from "react-redux";
 
 const renderDetailsButton = (params) => {
     return (
@@ -35,11 +36,13 @@ const columns = [
 const ScheduledAppointments = () => {
     const [appointments, setAppointments] = useState([]);
 
+    const userId = useSelector(state => state.value.user.id);
+
     useEffect(()=> {
-        listScheduledAppointments('123456')
+        listScheduledAppointments(userId)
             .then(appointments => setAppointments(appointments))
             .catch(error => console.error(error));
-    } , [])
+    } , [userId])
 
     return <>
         <Typography variant="h5" component="h1" sx={{marginBottom: 2}}>

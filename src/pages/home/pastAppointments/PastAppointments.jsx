@@ -4,6 +4,7 @@ import {DataGrid} from '@mui/x-data-grid';
 import {useEffect, useState} from "react";
 import Box from "@mui/material/Box";
 import {listPastAppointments} from "../../../services/appointments";
+import {useSelector} from "react-redux";
 
 const renderDetailsButton = (params) => {
     return (
@@ -33,11 +34,13 @@ const columns = [
 const PastAppointments = () => {
     const [appointments, setAppointments] = useState([]);
 
+    const userId = useSelector(state => state.value.user.id);
+
     useEffect(()=> {
-        listPastAppointments('123456')
+        listPastAppointments(userId)
             .then(appointments => setAppointments(appointments))
             .catch(error => console.error(error));
-    } , [])
+    } , [userId])
 
     return <>
         <Typography variant="h5" component="h1" sx={{marginY: 2}}>

@@ -13,9 +13,12 @@ import Grid from '@mui/material/Grid';
 import PsychologyIcon from '@mui/icons-material/Psychology';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { useDispatch } from 'react-redux'
+
 
 import BackGroundImage from './login_background.jpeg'
 import {login} from "../../services/authentication";
+import {setUserId} from "../../store/store";
 
 function Copyright(props) {
     return (
@@ -34,12 +37,14 @@ const theme = createTheme();
 
 export default function Login() {
     let navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const handleSubmit = (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
         login(data.get('email'), data.get('password'))
-            .then(() =>{
+            .then(response =>{
+                dispatch(setUserId(response.userId))
                 navigate("/requests", {replace: true})
             }).catch(error => console.error(error))
     };

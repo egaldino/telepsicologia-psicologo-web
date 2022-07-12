@@ -4,17 +4,20 @@ import Button from "@mui/material/Button";
 import {useEffect, useState} from "react";
 import Grid from "@mui/material/Grid";
 import {listRequests} from "../../../services/appointments";
+import {useSelector} from "react-redux";
 
 
 const Requests = () => {
 
     const [pendingRequests, setPendingRequests] = useState([]);
 
+    const userId = useSelector(state => state.value.user.id);
+
     useEffect(()=> {
-        listRequests('123456')
+        listRequests(userId)
             .then(requests => setPendingRequests(requests))
             .catch(error => console.error(error));
-    } , [])
+    } , [userId])
 
     return <Grid container rowSpacing={1} columnSpacing={{xs: 1, sm: 2, md: 3}}>
         {pendingRequests.map(pendingRequest =>
