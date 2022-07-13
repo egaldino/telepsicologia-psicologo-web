@@ -48,20 +48,20 @@ const ScheduledAppointments = () => {
         <Typography variant="h5" component="h1" sx={{marginBottom: 2}}>
             Próximo Atendimento
         </Typography>
-        <Card>
-            {appointments.length > 0 && <CardContent>
+        {appointments.length > 0 && <Card>
+            <CardContent>
                 <Typography gutterBottom variant="h5" component="div">
                     {appointments[0].firstName} {appointments[0].lastName}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
                     {appointments[0].date}
                 </Typography>
-            </CardContent> }
+            </CardContent>
             <CardActions>
-                <Button size="small" component={ReactRouterLink} to="/call">Entrar na chamada</Button>
+                <Button size="small" component={ReactRouterLink} to={`/call/${appointments[0].id}`}>Entrar na chamada</Button>
                 <Button size="small" sx={{color: 'error.main'}}>Cancelar</Button>
             </CardActions>
-        </Card>
+        </Card>}
         <Divider />
         <Typography variant="h5" component="h1" sx={{marginY: 2}}>
             Atendimentos Agendados

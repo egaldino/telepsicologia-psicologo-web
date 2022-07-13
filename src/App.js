@@ -35,7 +35,7 @@ const App = () => {
                         <HomeTemplate title="Meus Dados">
                             <Profile />
                         </HomeTemplate>}/>
-                    <Route path="call" element={<VideoCall/>}/>
+                    <Route path="call/:patientId" element={<VideoCall/>}/>
                 </Routes>
             </BrowserRouter>
         </Provider>
