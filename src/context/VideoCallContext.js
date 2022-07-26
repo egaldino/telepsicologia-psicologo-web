@@ -1,6 +1,6 @@
 import React, {createContext, useCallback, useEffect, useRef, useState} from 'react';
 import Peer from 'simple-peer';
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import {useSelector} from "react-redux";
 
 const SocketContext = createContext();
@@ -19,6 +19,8 @@ const ContextProvider = ({ children }) => {
   const connectionRef = useRef();
 
   const {patientId} = useParams();
+
+  const navigate = useNavigate();
 
   const userId = useSelector(state => state.value.user.id);
 
@@ -105,7 +107,7 @@ const ContextProvider = ({ children }) => {
 
     connectionRef.current.destroy();
 
-    window.location.reload();
+    navigate("/history")
   };
 
   return (

@@ -25,9 +25,8 @@ const renderDetailsButton = (params) => {
 }
 
 const columns = [
-    { field: 'firstName', headerName: 'Nome', width: 250 },
-    { field: 'lastName', headerName: 'Sobrenome', width: 250 },
-    { field: 'date', headerName: 'Data', width: 250 },
+    { field: 'name', headerName: 'Nome', width: 375 },
+    { field: 'date', headerName: 'Data', width: 375 },
     { field: 'actions', headerName: 'Ações', width: 250, renderCell: renderDetailsButton },
 ];
 

@@ -1,5 +1,5 @@
 export const listRequests = (userId) => {
-    return fetch(`${process.env.REACT_APP_PSICOLOGO_API_URL}/requests/${userId}`, {
+    return fetch(`${process.env.REACT_APP_APPOINTMENT_API_URL}/psychologist/requests/${userId}`, {
         method: 'GET',
         headers: {'Accept': 'application/json'},
     })
@@ -7,7 +7,7 @@ export const listRequests = (userId) => {
 }
 
 export const listScheduledAppointments = (userId) => {
-    return fetch(`${process.env.REACT_APP_PSICOLOGO_API_URL}/scheduled/${userId}`, {
+    return fetch(`${process.env.REACT_APP_APPOINTMENT_API_URL}/psychologist/scheduled/${userId}`, {
         method: 'GET',
         headers: {'Accept': 'application/json'},
     })
@@ -15,7 +15,7 @@ export const listScheduledAppointments = (userId) => {
 }
 
 export const listPastAppointments = (userId) => {
-    return fetch(`${process.env.REACT_APP_PSICOLOGO_API_URL}/pastAppointments/${userId}`, {
+    return fetch(`${process.env.REACT_APP_APPOINTMENT_API_URL}/psychologist/pastAppointments/${userId}`, {
         method: 'GET',
         headers: {'Accept': 'application/json'},
     })
