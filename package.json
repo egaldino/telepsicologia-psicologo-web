@@ -2,7 +2,7 @@
   "name": "telepsicologia-psicologo-web",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://telepsicologia-psicologo-web.s3.sa-east-1.amazonaws.com/",
+  "homepage": ".",
   "dependencies": {
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
