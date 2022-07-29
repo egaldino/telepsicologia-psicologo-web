@@ -5,7 +5,7 @@ import {useSelector} from "react-redux";
 
 const SocketContext = createContext();
 
-const socket = new WebSocket('wss://6a8b-138-117-221-171.sa.ngrok.io/socket');
+const socket = new WebSocket(process.env.REACT_APP_VIDEO_CALL_SOCKET);
 
 const ContextProvider = ({ children }) => {
   const [callAccepted, setCallAccepted] = useState(false);
