@@ -21,3 +21,21 @@ export const listPastAppointments = (userId) => {
     })
         .then((res) => res.json())
 }
+
+export const acceptRequest = (appointmentId) => {
+    return fetch(`${process.env.REACT_APP_APPOINTMENT_API_URL}/psychologist/accept`, {
+        method: 'POST',
+        headers: {'Accept': 'application/json', 'Content-Type': 'application/json'},
+        body: JSON.stringify({appointmentId})
+    })
+        .then((res) => res.json())
+}
+
+export const denyRequest = (appointmentId) => {
+    return fetch(`${process.env.REACT_APP_APPOINTMENT_API_URL}/psychologist/deny`, {
+        method: 'POST',
+        headers: {'Accept': 'application/json','Content-Type': 'application/json'},
+        body: JSON.stringify({appointmentId})
+    })
+        .then((res) => res.json())
+}

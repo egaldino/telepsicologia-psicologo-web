@@ -27,7 +27,7 @@ const renderDetailsButton = (params) => {
 }
 
 const columns = [
-    { field: 'name', headerName: 'Nome', width: 375 },
+    { field: 'patient.name', headerName: 'Nome', width: 375, valueGetter: (params) => params.row?.patient?.name  },
     { field: 'date', headerName: 'Data', width: 375 },
     { field: 'actions', headerName: 'Ações', width: 250, renderCell: renderDetailsButton },
 ];
@@ -50,7 +50,7 @@ const ScheduledAppointments = () => {
         {appointments.length > 0 && <Card>
             <CardContent>
                 <Typography gutterBottom variant="h5" component="div">
-                    {appointments[0].name}
+                    {appointments[0].patient.name}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
                     {appointments[0].date}
