@@ -57,7 +57,7 @@ const ScheduledAppointments = () => {
                 </Typography>
             </CardContent>
             <CardActions>
-                <Button size="small" component={ReactRouterLink} to={`/call/${appointments[0].id}`}>Entrar na chamada</Button>
+                <Button size="small" component={ReactRouterLink} to={`/call/${appointments[0].patient.id}`}>Entrar na chamada</Button>
                 <Button size="small" sx={{color: 'error.main'}}>Cancelar</Button>
             </CardActions>
         </Card>}
