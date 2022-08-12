@@ -15,28 +15,29 @@ const Requests = () => {
     const [pendingRequests, setPendingRequests] = useState([]);
 
     const userId = useSelector(state => state.value.user.id);
+    const token = useSelector(state => state.value.user.token);
 
     const updateRequests = useCallback(() => {
-        listRequests(userId)
+        listRequests(userId, token)
             .then(requests => setPendingRequests(requests))
             .catch(error => console.error(error));
-    }, [userId]);
+    }, [userId, token]);
 
     const callAcceptRequest =  (pendingRequestId) => {
-        acceptRequest(pendingRequestId)
+        acceptRequest(pendingRequestId, token)
             .then(() => navigate("/schedule"))
             .catch(error => console.error(error))
     }
 
     const callDenyRequest =  (pendingRequestId) => {
-        denyRequest(pendingRequestId)
+        denyRequest(pendingRequestId, token)
             .then(() => updateRequests())
             .catch(error => console.error(error))
     }
 
     useEffect(()=> {
         updateRequests();
-    } , [userId, updateRequests])
+    } , [userId, token, updateRequests])
 
     return <Grid container rowSpacing={1} columnSpacing={{xs: 1, sm: 2, md: 3}}>
         {pendingRequests.map(pendingRequest =>

@@ -18,7 +18,7 @@ import { useDispatch } from 'react-redux'
 
 import BackGroundImage from './login_background.jpeg'
 import {login} from "../../services/authentication";
-import {setUserId} from "../../store/store";
+import {setUser} from "../../store/store";
 
 function Copyright(props) {
     return (
@@ -44,7 +44,7 @@ export default function Login() {
         const data = new FormData(event.currentTarget);
         login(data.get('email'), data.get('password'))
             .then(response =>{
-                dispatch(setUserId(response.userId))
+                dispatch(setUser(response))
                 navigate("/requests", {replace: true})
             }).catch(error => console.error(error))
     };

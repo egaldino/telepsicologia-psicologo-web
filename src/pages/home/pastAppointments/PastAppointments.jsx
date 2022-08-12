@@ -34,12 +34,13 @@ const PastAppointments = () => {
     const [appointments, setAppointments] = useState([]);
 
     const userId = useSelector(state => state.value.user.id);
+    const token = useSelector(state => state.value.user.token);
 
     useEffect(()=> {
-        listPastAppointments(userId)
+        listPastAppointments(userId, token)
             .then(appointments => setAppointments(appointments))
             .catch(error => console.error(error));
-    } , [userId])
+    } , [userId, token])
 
     return <>
         <Typography variant="h5" component="h1" sx={{marginY: 2}}>
